@@ -1,4 +1,4 @@
 Sean Sponsler
 
-Python executable is very strange on unix server using proper prefix
+Python executable needs to be chmodded +x to run properly
 Soft misses are not being registered properly as page faults
