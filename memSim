@@ -160,17 +160,16 @@ def main():
                     break
 
             if tlb_hit:
-                print(f"HIT on address {logical_address} on frame {frame_number}")
+                #print(f"HIT on address {logical_address} on frame {frame_number}")
                 tlb_hits += 1
             else:
                 tlb_misses += 1
-                print(f"MISS on address {logical_address}")
+                #print(f"MISS on address {logical_address}")
 
                 # page table lookup
                 frame_number = -1
                 for entry in page_table:
                     if entry["frame_number"] == page_number:
-                        print("nOT USELESS")
                         frame_number = entry["frame_number"]
                         if not entry["loaded"]:
                             page_faults += 1
@@ -210,8 +209,8 @@ def main():
 
             # print output using proper byte format
             frame_content = "".join("{:02x}".format(byte) for byte in physical_memory[frame_number * PAGE_SIZE:(frame_number + 1) * PAGE_SIZE])
-            #print(f"{logical_address},{value},{frame_number},{frame_content}")
-            #print(f"{logical_address},{value},{frame_number}")
+            print(f"{logical_address},{value},{frame_number},{frame_content}")
+            print(f"{logical_address},{value},{frame_number}")
 
     # calculate statistics
     page_fault_rate = page_faults / total_addresses * 100 if total_addresses > 0 else 0
